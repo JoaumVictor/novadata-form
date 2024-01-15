@@ -1,9 +1,8 @@
+import Form from "./components/form";
+import "./index.css";
+
 function App() {
-  return (
-    <main className="w-full h-full">
-      <p className="text-7xl text-blue">SALVE</p>
-    </main>
-  );
+  return <Form />;
 }
 
 export default App;
