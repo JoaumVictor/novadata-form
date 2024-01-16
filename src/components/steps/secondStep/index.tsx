@@ -1,46 +1,16 @@
-import Button from "../../button";
-import arcadeImg from "../../../images/icon-arcade.svg";
-import advancedImg from "../../../images/icon-advanced.svg";
-import proImg from "../../../images/icon-pro.svg";
 import { useEffect, useState } from "react";
 import { classNames } from "../../../util/shared";
-
-import { Switch } from "@mui/material";
+import Button from "../../button";
 import { FormSteps } from "../../form";
 
-interface PlansI {
-  image: string;
-  name: string;
-  monthlyPrice: number;
-  yearlyPrice: number;
-}
+import { Switch } from "@mui/material";
+import plans, { PlansI } from "../../../mock/plans";
 
 interface SecondStepI {
   setStep: React.Dispatch<React.SetStateAction<FormSteps>>;
 }
 
 function SecondStep({ setStep }: SecondStepI) {
-  const plans: PlansI[] = [
-    {
-      image: arcadeImg,
-      name: "Arcade",
-      monthlyPrice: 9,
-      yearlyPrice: 99,
-    },
-    {
-      image: advancedImg,
-      name: "Advanced",
-      monthlyPrice: 12,
-      yearlyPrice: 120,
-    },
-    {
-      image: proImg,
-      name: "Pro",
-      monthlyPrice: 15,
-      yearlyPrice: 150,
-    },
-  ];
-
   const [selectedPlan, setSelectedPlan] = useState<PlansI>(plans[0]);
   const [selectedPeriod, setSelectedPeriod] = useState<"monthly" | "yearly">(
     "monthly"
@@ -63,12 +33,12 @@ function SecondStep({ setStep }: SecondStepI) {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-between w-3/4 h-[568px] px-20 pt-12 pb-6 rounded-xl">
+    <div className="flex flex-col items-center justify-between w-[520px] h-[568px] px-20 pt-12 pb-6 rounded-xl">
       <div className="flex flex-col items-center justify-center w-full">
         <p className="text-3xl w-full text-[#01265A] font-ubuntu-bold mb-2">
           Select your plan
         </p>
-        <p className="text-[#01265A]  text-[12px] w-full mb-4">
+        <p className="text-gray-400 text-[12px] w-full mb-4">
           You have the option of monthly or yearly billing.
         </p>
         <div className="flex items-center justify-center w-full gap-2 pt-6 flex-nowrap">

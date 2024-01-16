@@ -52,12 +52,12 @@ function FirstStep({ setStep }: FirstStepI) {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-between w-3/4 h-[568px] px-20 pt-12 pb-6 rounded-xl">
+    <div className="flex flex-col items-center justify-between w-[520px] h-[568px] px-20 pt-12 pb-6 rounded-xl">
       <div className="flex flex-col items-center justify-center w-full">
         <p className="text-3xl w-full text-[#01265A] font-ubuntu-bold mb-2">
           Personal Info
         </p>
-        <p className="text-[#01265A]  text-[12px] w-full mb-4">
+        <p className="text-gray-400 text-[12px] w-full mb-4">
           Please provide your name, email address, and phone number.
         </p>
         <Input

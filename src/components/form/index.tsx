@@ -28,7 +28,7 @@ function Form() {
       1: <FirstStep setStep={setStep} />,
       2: <SecondStep setStep={setStep} />,
       3: <ThirdStep setStep={setStep} />,
-      4: <FourthStep />,
+      4: <FourthStep setStep={setStep} />,
     };
     return forms[position];
   };
@@ -47,14 +47,19 @@ function Form() {
           {stepMap.map((item) => (
             <button
               id={item.name}
-              onClick={() => setStep(item.step)}
-              className="flex items-center justify-start w-4/5 h-16 gap-2"
+              onClick={() => {
+                if (item.step < step) setStep(item.step);
+              }}
+              className={classNames(
+                "flex items-center justify-start w-4/5 h-16 gap-2",
+                item.step <= step ? "cursor-pointer" : "cursor-auto"
+              )}
             >
               <div
                 className={classNames(
                   "rounded-full p-4 flex justify-center items-center w-[21px] h-[21px]",
                   step === item.step
-                    ? "bg-[#BEE1FE]"
+                    ? "bg-[#BEE1FE] border-2 border-[#BEE1FE]"
                     : "bg-transparent border-2 border-white"
                 )}
               >

@@ -3,6 +3,7 @@ import { classNames } from "../../../util/shared";
 import Button from "../../button";
 import iconCheckmark from "../../../images/icon-checkmark.svg";
 import { FormSteps } from "../../form";
+import options from "../../../mock/options";
 
 interface OptionsSelectedI {
   onlineService: boolean;
@@ -10,39 +11,11 @@ interface OptionsSelectedI {
   customProfile: boolean;
 }
 
-interface OptionsI {
-  optionName: "onlineService" | "largerStorage" | "customProfile";
-  title: string;
-  description: string;
-  price: number;
-}
-
 interface ThirdStepI {
   setStep: React.Dispatch<React.SetStateAction<FormSteps>>;
 }
 
 function ThirdStep({ setStep }: ThirdStepI) {
-  const options: OptionsI[] = [
-    {
-      optionName: "onlineService",
-      title: "Online Service",
-      description: "Access to multiplayer games.",
-      price: 1,
-    },
-    {
-      optionName: "largerStorage",
-      title: "Larger storage",
-      description: "Extra 1TB of cloud save.",
-      price: 2,
-    },
-    {
-      optionName: "customProfile",
-      title: "Customizable profile",
-      description: "Custom theme on your profile.",
-      price: 2,
-    },
-  ];
-
   const [optionSelected, setOptionSelected] = useState<OptionsSelectedI>({
     onlineService: false,
     largerStorage: false,
@@ -78,12 +51,12 @@ function ThirdStep({ setStep }: ThirdStepI) {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-between w-3/4 h-[568px] px-20 pt-12 pb-6 rounded-xl">
+    <div className="flex flex-col items-center justify-between w-[520px] h-[568px] px-20 pt-12 pb-6 rounded-xl">
       <div className="flex flex-col items-center justify-center w-full">
         <p className="text-3xl w-full text-[#01265A] font-ubuntu-bold mb-2">
           Pick add-ons
         </p>
-        <p className="text-[#01265A] text-[12px] w-full mb-4">
+        <p className="text-gray-400 text-[12px] w-full mb-4">
           Add-ons help enhance your gaming your gaming experience.
         </p>
         <div className="flex flex-col items-center justify-center w-full gap-2">
@@ -112,7 +85,11 @@ function ThirdStep({ setStep }: ThirdStepI) {
                   )}
                 >
                   {optionSelected[option.optionName] && (
-                    <img src={iconCheckmark} alt="checkmark icon" width={14} />
+                    <img
+                      src={iconCheckmark}
+                      alt="checkmark icon"
+                      className="scale-150"
+                    />
                   )}
                 </div>
                 <div className="flex flex-col items-start justify-center w-[80%]">
