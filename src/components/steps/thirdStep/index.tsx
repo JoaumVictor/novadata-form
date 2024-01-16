@@ -59,10 +59,11 @@ function ThirdStep({ setStep }: ThirdStepI) {
         <p className="text-gray-400 text-[12px] w-full mb-4">
           Add-ons help enhance your gaming your gaming experience.
         </p>
-        <div className="flex flex-col items-center justify-center w-full gap-2">
+        <div className="flex flex-col items-center justify-center w-full gap-2 mt-5">
           {options.map((option) => {
             return (
               <button
+                id={option.optionName}
                 className={classNames(
                   "flex gap-4 flex-row items-center justify-between py-3 px-6 w-full border border-gray-400 hover:border-[#544D94] rounded-[8px]",
                   optionSelected[option.optionName]

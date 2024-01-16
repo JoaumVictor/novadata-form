@@ -41,13 +41,16 @@ function SecondStep({ setStep }: SecondStepI) {
         <p className="text-gray-400 text-[12px] w-full mb-4">
           You have the option of monthly or yearly billing.
         </p>
-        <div className="flex items-center justify-center w-full gap-2 pt-6 flex-nowrap">
+        <div className="flex items-center justify-center w-full gap-2 pt-5 flex-nowrap">
           {plans.map((plan) => {
             return (
               <button
+                id={plan.name}
                 className={classNames(
                   "flex flex-col items-start justify-between px-3 py-6 w-1/3 h-36 mb-4 border border-gray-400 hover:border-[#544D94] rounded-[8px]",
-                  plan.name === selectedPlan.name ? "bg-[#F8F9FE]" : "bg-white"
+                  plan.name === selectedPlan.name
+                    ? "bg-[#F8F9FE] border-[#4a4291]"
+                    : "bg-white"
                 )}
                 onClick={() => setSelectedPlan(plan)}
               >

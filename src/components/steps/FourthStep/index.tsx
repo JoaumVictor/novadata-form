@@ -57,7 +57,7 @@ function FourthStep({ setStep }: FourthStepI) {
         <p className="text-gray-400 text-[12px] w-full mb-4">
           Double-check everything looks OK before confirming.
         </p>
-        <div className="bg-gray-200 rounded-[8px] w-full">
+        <div className="bg-gray-200 rounded-[8px] w-full mt-5">
           <div className="flex flex-row items-center justify-between px-5 py-3">
             <div>
               <p className="text-[14px] font-ubuntu-bold text-[#01265A]">
@@ -80,20 +80,31 @@ function FourthStep({ setStep }: FourthStepI) {
           <div className="w-[94%] h-[1px] mx-auto bg-gray-300" />
           {options.map((option) => (
             <div
+              id={option.title}
               className={classNames(
                 "flex items-center justify-between px-4 my-2",
                 !finallyServices[option.optionName] && "hidden"
               )}
             >
               <p className="text-[12px] text-gray-400">{option.title}</p>
-              <p className="text-[12px] text-[#01265A]">+${option.price}/mo</p>
+              <p className="text-[12px] text-[#01265A]">
+                {finallyPlan.period === "monthly"
+                  ? `+${option.price}/mo`
+                  : `+${option.price * 12}/ye`}
+              </p>
             </div>
           ))}
         </div>
         <div className="flex items-center justify-between w-full mt-10">
-          <p className="text-[12px] text-gray-400">{"Total (per month)"}</p>
+          <p className="text-[12px] text-gray-400">
+            {finallyPlan.period === "monthly"
+              ? "Total (per month)"
+              : "Total (per year)"}
+          </p>
           <p className="text-[16px] text-[#5145E6] font-ubuntu-bold">
-            +${totalValue}/mo
+            {finallyPlan.period === "monthly"
+              ? `+${totalValue}/mo`
+              : `+${totalValue * 12}/ye`}
           </p>
         </div>
       </div>

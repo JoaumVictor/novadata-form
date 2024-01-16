@@ -25,13 +25,13 @@ function Input({
     <div className="flex flex-col items-start justify-center w-full my-4 flex-nowrap">
       <div className="flex items-center justify-between w-full">
         <label
-          className="text-[14px] text-[#505E7B] font-ubuntu-bold"
+          className="text-[12px] text-[#505E7B] font-ubuntu-bold"
           htmlFor="email"
         >
           {label}
         </label>
         {error && touched && (
-          <span className="font-bold text-red-500 text-[14px]">{error}</span>
+          <span className="font-bold text-red-500 text-[12px]">{error}</span>
         )}
       </div>
       <input
