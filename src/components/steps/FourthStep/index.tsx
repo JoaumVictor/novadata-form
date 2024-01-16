@@ -117,7 +117,6 @@ function FourthStep({ setStep }: FourthStepI) {
         <div className="flex flex-col items-center justify-center w-full h-full gap-4">
           <img src={thankyou} alt="thanks" />
           <p className="text-3xl text-[#322c7f] font-ubuntu-bold">Thank You</p>
-          <p className="text-[#322c7f]">Tamo junto 🤌✨</p>
         </div>
       )}
       {!complete && (
