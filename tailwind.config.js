@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "ubuntu-bold": ["Ubuntu-Bold", "sans-serif"],
+        default: ["Ubuntu-Regular", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

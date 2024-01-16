@@ -3,15 +3,29 @@ import FirstStep from "../steps/firstStep";
 import SecondStep from "../steps/secondStep";
 import ThirdStep from "../steps/thirdStep";
 import FourthStep from "../steps/FourthStep";
+import bgsidebar from "../../images/bg-sidebar-desktop.svg";
+import { classNames } from "../../util/shared";
 
 type FormSteps = 1 | 2 | 3 | 4;
+
+interface stepMapProps {
+  step: FormSteps;
+  name: string;
+}
 
 function Form() {
   const [step, setStep] = useState<FormSteps>(1);
 
+  const stepMap: stepMapProps[] = [
+    { step: 1, name: "YOUR INFO" },
+    { step: 2, name: "SELECT PLAN" },
+    { step: 3, name: "ADD-ONS" },
+    { step: 4, name: "SUMMARY" },
+  ];
+
   const returnFormInPosition = (position: FormSteps) => {
     const forms = {
-      1: <FirstStep />,
+      1: <FirstStep setStep={setStep} />,
       2: <SecondStep />,
       3: <ThirdStep />,
       4: <FourthStep />,
@@ -21,16 +35,48 @@ function Form() {
 
   return (
     <main className="flex h-[100vh] items-center justify-center w-full bg-[#EEF5FF]">
-      <div className="flex flex-row items-center justify-center gap-4 bg-white max-w-screen-2xl rounded-xl flex-nowrap">
-        <div className="w-1/4 border border-black">
-          <button onClick={() => setStep(1)}>passo 1</button>
-          <button onClick={() => setStep(2)}>passo 2</button>
-          <button onClick={() => setStep(3)}>passo 3</button>
-          <button onClick={() => setStep(4)}>passo 4</button>
+      <div className="flex flex-row items-center justify-center gap-4 p-4 bg-white max-w-screen-2xl rounded-xl flex-nowrap">
+        <div
+          className="flex flex-col items-center justify-start w-1/4 rounded-[10px] pt-6 gap-2"
+          style={{
+            background: `url(${bgsidebar})`,
+            width: "274px",
+            height: "568px",
+          }}
+        >
+          {stepMap.map((item) => (
+            <button
+              id={item.name}
+              onClick={() => setStep(item.step)}
+              className="flex items-center justify-start w-4/5 h-16 gap-2"
+            >
+              <div
+                className={classNames(
+                  "rounded-full p-4 flex justify-center items-center w-[21px] h-[21px]",
+                  step === item.step
+                    ? "bg-[#BEE1FE]"
+                    : "bg-transparent border-2 border-white"
+                )}
+              >
+                <p
+                  className={classNames(
+                    step === item.step ? "text-black" : "text-white",
+                    "text-[14px] font-ubuntu-bold"
+                  )}
+                >
+                  {item.step}
+                </p>
+              </div>
+              <div className="flex flex-col items-start justify-center">
+                <p className="text-gray-400 text-[10px]">STEP {item.step}</p>
+                <p className="text-white text-[14px] font-ubuntu-bold tracking-wider">
+                  {item.name}
+                </p>
+              </div>
+            </button>
+          ))}
         </div>
-        <div className="w-3/4 border border-black rounded-xl">
-          {returnFormInPosition(step)}
-        </div>
+        {returnFormInPosition(step)}
       </div>
     </main>
   );
