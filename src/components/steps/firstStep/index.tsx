@@ -57,7 +57,7 @@ function FirstStep({ setStep }: FirstStepI) {
         <p className="text-3xl w-full text-[#01265A] font-ubuntu-bold mb-2">
           Personal Info
         </p>
-        <p className="text-[#01265A] w-full mb-4">
+        <p className="text-[#01265A]  text-[12px] w-full mb-4">
           Please provide your name, email address, and phone number.
         </p>
         <Input

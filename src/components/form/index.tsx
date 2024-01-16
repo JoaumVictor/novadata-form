@@ -27,7 +27,7 @@ function Form() {
     const forms = {
       1: <FirstStep setStep={setStep} />,
       2: <SecondStep setStep={setStep} />,
-      3: <ThirdStep />,
+      3: <ThirdStep setStep={setStep} />,
       4: <FourthStep />,
     };
     return forms[position];

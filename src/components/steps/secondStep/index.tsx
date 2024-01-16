@@ -46,13 +46,13 @@ function SecondStep({ setStep }: SecondStepI) {
     "monthly"
   );
 
-  const handleNextStep = () => {
+  const navigationAndSaveInfos = (step: FormSteps) => {
     localStorage.setItem("plan", selectedPlan.name);
     localStorage.setItem(
       "period",
       selectedPeriod === "monthly" ? "monthly" : "yearly"
     );
-    setStep(3);
+    setStep(step);
   };
 
   useEffect(() => {
@@ -68,7 +68,7 @@ function SecondStep({ setStep }: SecondStepI) {
         <p className="text-3xl w-full text-[#01265A] font-ubuntu-bold mb-2">
           Select your plan
         </p>
-        <p className="text-[#01265A] w-full mb-4">
+        <p className="text-[#01265A]  text-[12px] w-full mb-4">
           You have the option of monthly or yearly billing.
         </p>
         <div className="flex items-center justify-center w-full gap-2 pt-6 flex-nowrap">
@@ -132,14 +132,12 @@ function SecondStep({ setStep }: SecondStepI) {
         <Button
           label="Go Back"
           type="secondary"
-          onClick={() => setStep(1)}
-          disabled={false}
+          onClick={() => navigationAndSaveInfos(1)}
         />
         <Button
           label="Next Step"
           type="primary"
-          onClick={handleNextStep}
-          disabled={false}
+          onClick={() => navigationAndSaveInfos(3)}
         />
       </div>
     </div>
