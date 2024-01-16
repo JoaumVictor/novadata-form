@@ -6,7 +6,7 @@ import FourthStep from "../steps/FourthStep";
 import bgsidebar from "../../images/bg-sidebar-desktop.svg";
 import { classNames } from "../../util/shared";
 
-type FormSteps = 1 | 2 | 3 | 4;
+export type FormSteps = 1 | 2 | 3 | 4;
 
 interface stepMapProps {
   step: FormSteps;
@@ -26,7 +26,7 @@ function Form() {
   const returnFormInPosition = (position: FormSteps) => {
     const forms = {
       1: <FirstStep setStep={setStep} />,
-      2: <SecondStep />,
+      2: <SecondStep setStep={setStep} />,
       3: <ThirdStep />,
       4: <FourthStep />,
     };

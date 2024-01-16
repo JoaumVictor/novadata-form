@@ -4,8 +4,13 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import Button from "../../button";
 import { useEffect } from "react";
+import { FormSteps } from "../../form";
 
-function FirstStep({ setStep }: any) {
+interface FirstStepI {
+  setStep: React.Dispatch<React.SetStateAction<FormSteps>>;
+}
+
+function FirstStep({ setStep }: FirstStepI) {
   const validationSchema = yup.object({
     email: yup
       .string()
